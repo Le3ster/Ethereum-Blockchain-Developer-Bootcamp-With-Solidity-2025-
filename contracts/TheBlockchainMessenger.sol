@@ -6,25 +6,26 @@ pragma solidity ^0.8.15;
 /// @dev Demonstrates basic access control and state changes in Solidity
 contract TheBlockchainMessenger {
 
-    /// @notice Tracks number of times the message was updated
+    /// @notice Tracks the number of times the message has been updated
     uint public changeCounter;
 
-    /// @notice Address of the contract deployer (owner)
+    /// @notice Stores the address of the contract deployer (owner)
     address public owner;
 
-    /// @notice The current message stored on-chain
+    /// @notice Holds the current message stored on-chain
     string public theMessage;
 
-    /// @notice Initializes the contract setting the deployer as the owner
+    /// @notice Constructor that sets the deployer as the initial owner of the contract
     constructor() {
-        owner = msg.sender;
+        owner = msg.sender; // Set the contract deployer as the owner
     }
 
-    /// @notice Updates the message (only callable by owner)
-    /// @param _newMessage The new message string to store
+    /// @notice Updates the on-chain message to a new value
+    /// @dev This function is restricted to the owner of the contract
+    /// @param _newMessage The new message to be stored on the blockchain
     function updateTheMessage(string memory _newMessage) public {
         require(msg.sender == owner, "Only the owner can update the message");
-        theMessage = _newMessage;
-        changeCounter++;
+        theMessage = _newMessage; // Update the message state variable
+        changeCounter++; // Increment the update counter
     }
 }
