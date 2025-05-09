@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.15;
+pragma solidity ^0.8.16;
 
 /// @title The Blockchain Messenger
 /// @notice Allows the contract owner to update a message on-chain
